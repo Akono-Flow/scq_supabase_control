@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Gallery</title>
+  <meta name="description" content="Educational quiz applications and assessment tools">
+  <link rel="stylesheet" href="../assets/gallery-style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header>
+    <h1>📝 Quiz Applications</h1>
+    <p>Test your knowledge with interactive quizzes</p>
+  </header>
+
+  <main>
+    <div id="gallery"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Educational Apps Gallery | M. Cole</p>
+  </footer>
+
+  <!-- Set the gallery ID -->
+  <script>
+    const GALLERY_ID = "quiz";
+  </script>
+  <script src="../assets/supabase-config.js"></script>
+  <script src="../assets/auth-utils.js"></script>
+  <script src="../assets/gallery-script.js"></script>
+  
+  <script>
+    // Validate session before loading gallery
+    async function initGallery() {
+      const isValid = await validateCurrentSession();
+      if (!isValid) {
+        window.location.href = '../user-login.html';
+        return;
+      }
+      
+      // Log this gallery access
+      await logGalleryAccess(GALLERY_ID, "Quiz");
+      
+      // Load the gallery
+      loadGallery();
+    }
+    
+    // Override the original loadGallery to add session check
+    const originalLoadGallery = loadGallery;
+    loadGallery = async function() {
+      const session = getSession();
+      if (!session) {
+        window.location.href = '../user-login.html';
+        return;
+      }
+      originalLoadGallery();
+    };
+    
+    // Initialize on DOM ready
+    document.addEventListener("DOMContentLoaded", initGallery);
+  </script>
+</body>
+</html>
