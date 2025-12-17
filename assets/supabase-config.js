@@ -11,7 +11,7 @@ const SUPABASE_URL = 'https://twuvtggbdhbynxgrfabs.supabase.co';
 
 // Your Supabase Anon/Public Key
 // Example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3dXZ0Z2diZGhieW54Z3JmYWJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYwMDE0ODksImV4cCI6MjA4MTU3NzQ4OX0.XtL9tSdDX-pil97p-AZqAwXTmvpkM32w9voJnC16nAc';
+const SUPABASE_ANON_KEY = 'sb_publishable_f1B8rSN3qp-oBEJ8hjeNRA_206IQshu';
 
 // =====================================================
 // Initialize Supabase Client
