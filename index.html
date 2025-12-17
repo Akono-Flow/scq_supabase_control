@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational Apps</title>
+  <meta name="description" content="Educational applications and learning tools">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .container {
+      max-width: 600px;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    p {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    
+    .icon {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.125rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      margin: 0.5rem;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+    }
+    
+    .cta-button.secondary {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+    
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+    
+    .subtle-link {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.75rem;
+      margin-top: 2rem;
+      display: inline-block;
+      transition: opacity 0.3s ease;
+    }
+    
+    .subtle-link:hover {
+      opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .icon {
+        font-size: 3.5rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+      
+      .cta-button {
+        display: block;
+        margin: 0.5rem auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📚</div>
+    <h1>Educational Apps</h1>
+    <p>
+      Welcome to our collection of interactive educational applications and learning tools.
+      Browse by category to discover apps that make learning engaging and effective.
+    </p>
+    
+    <a href="galleries.html" class="cta-button">Browse Galleries</a>
+    
+    <div class="footer">
+      <p>&copy; 2025 Educational Apps | M. Cole</p>
+    </div>
+    
+    <!-- Subtle admin link -->
+    <a href="admin.html" class="subtle-link">•</a>
+  </div>
+</body>
+</html>
