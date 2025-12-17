@@ -2,15 +2,13 @@
 // Supabase Configuration
 // =====================================================
 // IMPORTANT: Replace with your actual Supabase credentials
-// Get these from: Supabase Dashboard → Settings → API
+// Get these from: Supabase Dashboard → Settings → API Keys
 // =====================================================
 
 // Your Supabase Project URL
-// Example: 'https://abcdefghijk.supabase.co'
 const SUPABASE_URL = 'https://twuvtggbdhbynxgrfabs.supabase.co';
 
-// Your Supabase Anon/Public Key
-// Example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
+// Your Supabase Anon/Public Key (Publishable Key)
 const SUPABASE_ANON_KEY = 'sb_publishable_f1B8rSN3qp-oBEJ8hjeNRA_206IQshu';
 
 // =====================================================
@@ -18,19 +16,34 @@ const SUPABASE_ANON_KEY = 'sb_publishable_f1B8rSN3qp-oBEJ8hjeNRA_206IQshu';
 // =====================================================
 
 // Check if credentials are set
-if (SUPABASE_URL === 'YOUR_PROJECT_URL_HERE' || SUPABASE_ANON_KEY === 'YOUR_ANON_KEY_HERE') {
+if (SUPABASE_URL === 'YOUR_PROJECT_URL_HERE' || SUPABASE_ANON_KEY === 'YOUR_ANON_KEY_HERE' || SUPABASE_ANON_KEY === 'PASTE_YOUR_PUBLISHABLE_KEY_HERE') {
     console.error('⚠️ SUPABASE CONFIGURATION ERROR ⚠️');
     console.error('Please update supabase-config.js with your actual credentials');
-    console.error('Get them from: Supabase Dashboard → Settings → API');
+    console.error('Get them from: Supabase Dashboard → Settings → API Keys');
 }
 
-// Create Supabase client
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Create Supabase client - use window.supabase to avoid conflicts
+if (typeof window.supabase !== 'undefined' && typeof window.supabase.createClient === 'function') {
+    // Initialize the client and store it globally
+    window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    
+    // Also make it available as 'supabase' for convenience
+    window.supabase = window.supabaseClient;
+    
+    // Test connection (only in development)
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        testSupabaseConnection();
+    }
+    
+    console.log('✅ Supabase client initialized');
+} else {
+    console.error('❌ Supabase library not loaded. Make sure the CDN script is included before this file.');
+}
 
-// Test connection
+// Test connection function
 async function testSupabaseConnection() {
     try {
-        const { data, error } = await supabase.from('users').select('count');
+        const { data, error } = await window.supabase.from('users').select('count');
         if (error) {
             console.error('Supabase connection error:', error);
             return false;
@@ -42,11 +55,3 @@ async function testSupabaseConnection() {
         return false;
     }
 }
-
-// Run connection test on load (only in development)
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    testSupabaseConnection();
-}
-
-// Export for use in other files
-window.supabaseClient = supabase;
