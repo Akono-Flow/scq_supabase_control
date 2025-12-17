@@ -18,7 +18,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // =====================================================
 
 // Check if credentials are set
-if (SUPABASE_URL === 'https://twuvtggbdhbynxgrfabs.supabase.co' || SUPABASE_ANON_KEY === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3dXZ0Z2diZGhieW54Z3JmYWJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYwMDE0ODksImV4cCI6MjA4MTU3NzQ4OX0.XtL9tSdDX-pil97p-AZqAwXTmvpkM32w9voJnC16nAc') {
+if (SUPABASE_URL === 'YOUR_PROJECT_URL_HERE' || SUPABASE_ANON_KEY === 'YOUR_ANON_KEY_HERE') {
     console.error('⚠️ SUPABASE CONFIGURATION ERROR ⚠️');
     console.error('Please update supabase-config.js with your actual credentials');
     console.error('Get them from: Supabase Dashboard → Settings → API');
